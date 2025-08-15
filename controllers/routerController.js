@@ -7,10 +7,10 @@ const urlShorterner = async function (req, res) {
   try {
     const parsedUrl = new URL(originalurl);
     if (parsedUrl.protocol !== "http:" && parsedUrl.protocol !== "https:") {
-      return res.status(404).json({ error: "invalid url" });
+      return res.json({ error: "invalid url" });
     }
   } catch (error) {
-    return res.status(404).json({ error: "invalid url" });
+    return res.json({ error: "invalid url" });
   }
 
   const urlDocument = await UrlModel.create({ originalUrl: originalurl });
